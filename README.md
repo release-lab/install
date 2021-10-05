@@ -8,7 +8,7 @@ This took me a lot of time and did a lot of repetitive work.
 
 So I decided to write a universal script, which applies to all warehouses.
 
-1. Shell (Mac/Linux)
+### 1. Shell (Mac/Linux)
 
 install latest version
 
@@ -31,7 +31,7 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
   | bash -s release-lab/whatchanged -e=whatchanged
 ```
 
-2. PowerShell (Windows):
+### 2. PowerShell (Windows):
 
 install latest version
 
