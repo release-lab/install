@@ -18,10 +18,6 @@ if ($v) {
   $Version = "${v}"
 }
 
-if ($args.Length -eq 1) {
-  $Version = $args.Get(0)
-}
-
 if ([Environment]::Is64BitProcess) {
   $arch = "amd64"
 } else {
