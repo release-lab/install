@@ -60,26 +60,26 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
 install latest version
 
 ```powershell
-$repo="{owner}/{repo}"; iwr https://raw.githubusercontent.com/release-lab/install/master/install.ps1 -useb | iex
+$repo="{owner}/{repo}"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 
 # example:
-# $repo="release-lab/whatchanged"; iwr https://raw.githubusercontent.com/release-lab/install/master/install.ps1 -useb | iex
+# $repo="release-lab/whatchanged"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
 
 install specified version
 
 ```powershell
-$repo="{owner}/{repo}"; $v="{version}"; iwr https://raw.githubusercontent.com/release-lab/install/master/install.ps1 -useb | iex
+$repo="{owner}/{repo}"; $v="{version}"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 
 # example:
-# $repo="release-lab/whatchanged"; $v="v0.4.1"; iwr https://raw.githubusercontent.com/release-lab/install/master/install.ps1 -useb | iex
+# $repo="release-lab/whatchanged"; $v="v0.4.1"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
 
 specified the filename
 
 ```bash
-$repo="{owner}/{repo}"; $exe="{exe}"; iwr https://raw.githubusercontent.com/release-lab/install/master/install.ps1 -useb | iex
+$repo="{owner}/{repo}"; $exe="{exe}"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 
 # example:
-# $repo="release-lab/whatchanged"; $exe="whatchanged"; iwr https://raw.githubusercontent.com/release-lab/install/master/install.ps1 -useb | iex
+# $repo="release-lab/whatchanged"; $exe="whatchanged"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
