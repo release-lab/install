@@ -25,34 +25,28 @@ whatchanged_windows_amd64.tar.gz
 install latest version
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/master/install.sh \
-  | bash -s {owner}/{repo}
+curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s {owner}/{repo}
 
 # example:
-#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh \
-#  | bash -s release-lab/whatchanged
+#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s release-lab/whatchanged
 ```
 
 install specified version
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/master/install.sh \
-  | bash -s {owner}/{repo} -v={version}
+curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s {owner}/{repo} -v={version}
 
 # example:
-#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh \
-#  | bash -s release-lab/whatchanged -v=v0.4.1
+#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s release-lab/whatchanged -v=v0.4.1
 ```
 
 specified the filename
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
-  | bash -s {owner}/{repo} -e={exe}
+curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s {owner}/{repo} -e={exe}
 
 # example:
-#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
-#  | bash -s release-lab/whatchanged -e=whatchanged
+#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s release-lab/whatchanged -e=whatchanged
 ```
 
 ### 2. PowerShell (Windows):
