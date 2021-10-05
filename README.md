@@ -2,7 +2,7 @@
 
 This is a script for download binary from Github Release and install in your computer.
 
-For a long-term dependency, I wrote a lot of tools and released them on Github Release, but I had to write an installation script for each tool.
+For a long time, I wrote a lot of tools and released them on Github Release, but I had to write an installation script for each tool.
 
 This took me a lot of time and did a lot of repetitive work.
 
