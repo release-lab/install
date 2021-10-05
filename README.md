@@ -11,6 +11,7 @@ So I decided to write a universal script, which applies to all warehouses.
 It needs to meet the following format `{name}_{os}_{arch}.tar.gz`
 
 eg.
+
 ```
 whatchanged_darwin_amd64.tar.gz
 whatchanged_darwin_arm64.tar.gz
@@ -25,21 +26,33 @@ install latest version
 
 ```bash
 curl -fsSL https://github.com/release-lab/install/raw/master/install.sh \
-  | bash -s release-lab/whatchanged
+  | bash -s {owner}/{repo}
+
+# example:
+#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh \
+#  | bash -s release-lab/whatchanged
 ```
 
 install specified version
 
 ```bash
 curl -fsSL https://github.com/release-lab/install/raw/master/install.sh \
-  | bash -s release-lab/whatchanged -v=v0.4.1
+  | bash -s {owner}/{repo} -v={version}
+
+# example:
+#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh \
+#  | bash -s release-lab/whatchanged -v=v0.4.1
 ```
 
 specified the filename
 
 ```bash
 curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
-  | bash -s release-lab/whatchanged -e=whatchanged
+  | bash -s {owner}/{repo} -e={exe}
+
+# example:
+#curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
+#  | bash -s release-lab/whatchanged -e=whatchanged
 ```
 
 ### 2. PowerShell (Windows):
@@ -47,17 +60,26 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
 install latest version
 
 ```powershell
-$repo="release-lab/whatchanged"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+$repo="{owner}/{repo}"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+
+# example:
+# $repo="release-lab/whatchanged"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
 
 install specified version
 
 ```powershell
-$repo="release-lab/whatchanged"; $v="v0.4.1"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+$repo="{owner}/{repo}"; $v="{version}"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+
+# example:
+# $repo="release-lab/whatchanged"; $v="v0.4.1"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
 
 specified the filename
 
 ```bash
-$repo="release-lab/whatchanged"; $exe="whatchanged"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+$repo="{owner}/{repo}"; $exe="{exe}"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+
+# example:
+# $repo="release-lab/whatchanged"; $exe="whatchanged"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
