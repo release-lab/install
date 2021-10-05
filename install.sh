@@ -42,7 +42,7 @@ get_arch() {
 }
 
 get_os(){
-    # darwin: uname -s
+    # darwin: Darwin
     echo $(uname -s | awk '{print tolower($0)}')
 }
 

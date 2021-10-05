@@ -16,7 +16,7 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -
 
 ```bash
 # install latest version
-iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+$repo=release-lib/whatchanged; $exe=whatchanged; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 # or install specified version
-$v="v0.4.1"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+$repo=release-lib/whatchanged; $exe=whatchanged; $v="v0.4.1"; iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
