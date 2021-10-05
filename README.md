@@ -28,20 +28,20 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
 install latest version
 
 ```powershell
-$repo=release-lab/whatchanged; \
+$repo="release-lab/whatchanged"; \
   iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
 
 install specified version
 
 ```powershell
-$repo=release-lab/whatchanged; $exe=whatchanged; $v="v0.4.1"; \
+$repo="release-lab/whatchanged"; $v="v0.4.1"; \
   iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
 
 specified the filename
 
 ```bash
-$repo=release-lab/whatchanged; $exe=whatchanged; \
+$repo="release-lab/whatchanged"; $exe="whatchanged"; \
   iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
