@@ -25,11 +25,16 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh |
 
 2. PowerShell (Windows):
 
-```bash
-# install latest version
+install latest version
+
+```powershell
 $repo=release-lab/whatchanged; $exe=whatchanged; \
   iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
-# or install specified version
+```
+
+install specified version
+
+```powershell
 $repo=release-lab/whatchanged; $exe=whatchanged; $v="v0.4.1"; \
   iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
 ```
