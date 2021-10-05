@@ -10,11 +10,11 @@ $arr = $repo.Split('/')
 
 $owner = $arr[0]
 $repoName = $arr[1]
-$exeName = $exe
+$exeName = "${exe}"
 $version = ""
 
 if ($exeName == "") {
-  $exeName = $repoName
+  $exeName = "${repoName}"
 }
 
 if ($v) {
