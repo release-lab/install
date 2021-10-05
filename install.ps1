@@ -13,7 +13,7 @@ $repoName = $arr[1]
 $exeName = "${exe}"
 $version = ""
 
-if ($exeName == "") {
+if ($exeName -eq "") {
   $exeName = "${repoName}"
 }
 
