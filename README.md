@@ -8,6 +8,17 @@ This took me a lot of time and did a lot of repetitive work.
 
 So I decided to write a universal script, which applies to all warehouses.
 
+It needs to meet the following format `{name}_{os}_{arch}.tar.gz`
+
+eg.
+```
+whatchanged_darwin_amd64.tar.gz
+whatchanged_darwin_arm64.tar.gz
+whatchanged_freebsd_amd64.tar.gz
+whatchanged_windows_amd64.tar.gz
+...
+```
+
 ### 1. Shell (Mac/Linux)
 
 install latest version
