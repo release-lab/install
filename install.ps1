@@ -4,9 +4,15 @@
 
 $ErrorActionPreference = 'Stop'
 
-$owner = "release-lab"
-$repo = "whatchanged"
-$exeName = "whatchanged"
+$arr = $repo.Split('/')
+
+$owner = arr[0]
+$repoName = arr[1]
+$exeName = $exe
+
+if ($exeName == "") {
+  $exeName = $repoName
+}
 
 if ($v) {
   $Version = "${v}"
@@ -31,9 +37,9 @@ $Target = "windows_$arch"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 $ResourceUri = if (!$Version) {
-  "https://github.com/${owner}/${repo}/releases/latest/download/${exeName}_${Target}.tar.gz"
+  "https://github.com/${owner}/${repoName}/releases/latest/download/${exeName}_${Target}.tar.gz"
 } else {
-  "https://github.com/${owner}/${repo}/releases/download/${Version}/${exeName}_${Target}.tar.gz"
+  "https://github.com/${owner}/${repoName}/releases/download/${Version}/${exeName}_${Target}.tar.gz"
 }
 
 if (!(Test-Path $BinDir)) {
