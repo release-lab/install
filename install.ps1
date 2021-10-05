@@ -8,8 +8,8 @@ Write-Output "${repo}"
 
 $arr = $repo.Split('/')
 
-$owner = $arr[0]
-$repoName = $arr[1]
+$owner = $arr.Get(0)
+$repoName = $arr.Get(1)
 $exeName = "${exe}"
 $version = ""
 
