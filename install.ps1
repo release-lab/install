@@ -9,13 +9,14 @@ $arr = $repo.Split('/')
 $owner = $arr[0]
 $repoName = $arr[1]
 $exeName = $exe
+$version = ""
 
 if ($exeName == "") {
   $exeName = $repoName
 }
 
 if ($v) {
-  $Version = "${v}"
+  $version = "${v}"
 }
 
 if ([Environment]::Is64BitProcess) {
@@ -32,7 +33,7 @@ $Target = "windows_$arch"
 # GitHub requires TLS 1.2
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$ResourceUri = if (!$Version) {
+$ResourceUri = if (!$version) {
   "https://github.com/${owner}/${repoName}/releases/latest/download/${exeName}_${Target}.tar.gz"
 } else {
   "https://github.com/${owner}/${repoName}/releases/download/${Version}/${exeName}_${Target}.tar.gz"
