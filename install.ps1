@@ -4,8 +4,6 @@
 
 $ErrorActionPreference = 'Stop'
 
-Write-Output "${repo}"
-
 $arr = $repo.Split('/')
 
 $owner = $arr.Get(0)
