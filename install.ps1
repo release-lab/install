@@ -43,7 +43,7 @@ if (!(Test-Path $BinDir)) {
   New-Item $BinDir -ItemType Directory | Out-Null
 }
 
-Invoke-WebRequest $ResourceUri -OutFile $downloadedTagGz -UseBasicParsing
+Invoke-WebRequest $ResourceUri -OutFile $downloadedTagGz -UseBasicParsing -ErrorAction Stop
 
 function Check-Command {
   param($Command)
