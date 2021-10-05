@@ -2,49 +2,89 @@
 
 set -e
 
-downloadFolder="${HOME}/Downloads"
-owner="release-lab"
-repo="whatchanged"
-exe_name="whatchanged"
+if [ $# -eq 0 ]; then
+    echo "Need to specify the install repository"
+    exit 1
+fi
 
-mkdir -p ${downloadFolder}
+# eg. release-lab/whatchanged
+args=(`echo $1 | tr '/' ' '`)
+
+if [ ${#args[@]} -ne 2 ]; then
+    echo "invalid params for repo '$1'"
+    echo "the argument should be format like 'owner/repo'"
+    exit 1
+fi
+
+downloadFolder="${HOME}/Downloads"
+owner=${args[0]}
+repo=${args[1]}
+exe_name=""
+version=""
 
 get_arch() {
+    # darwin/amd64: Darwin axetroydeMacBook-Air.local 20.5.0 Darwin Kernel Version 20.5.0: Sat May  8 05:10:33 PDT 2021; root:xnu-7195.121.3~9/RELEASE_X86_64 x86_64
     a=$(uname -m)
     case ${a} in
-    "x86_64" | "amd64" )
-        echo "amd64"
+        "x86_64" | "amd64" )
+            echo "amd64"
         ;;
-    "i386" | "i486" | "i586")
-        echo "386"
+        "i386" | "i486" | "i586")
+            echo "386"
         ;;
-    "aarch64" | "arm64" | "arm")
-        echo "arm64"
+        "aarch64" | "arm64" | "arm")
+            echo "arm64"
         ;;
-    *)
-        echo ${NIL}
+        *)
+            echo ${NIL}
         ;;
     esac
 }
 
 get_os(){
+    # darwin: uname -s
     echo $(uname -s | awk '{print tolower($0)}')
 }
+
+# parse flag
+for i in "$@"; do
+    case $i in
+        -v=*|--version=*)
+            version="${i#*=}"
+            shift # past argument=value
+        ;;
+        -e=*|--exe=*)
+            exe_name="${i#*=}"
+            shift # past argument=value
+        ;;
+        *)
+            # unknown option
+        ;;
+    esac
+done
+
+if [ -z "$exe_name" ]; then
+    exe_name=$repo
+    echo "file name is not specified, use '$repo'"
+fi
+
+mkdir -p ${downloadFolder}
 
 os=$(get_os)
 arch=$(get_arch)
 dest_file="${downloadFolder}/${exe_name}_${os}_${arch}.tar.gz"
 
-if [ $# -eq 0 ]; then
+# if version is empty
+if [ -z "$version" ]; then
     asset_path=$(
         command curl -sSf https://github.com/${owner}/${repo}/releases |
-            command grep -o "/${owner}/${repo}/releases/download/.*/${exe_name}_${os}_${arch}.tar.gz" |
-            command head -n 1
+        command grep -o "/${owner}/${repo}/releases/download/.*/${exe_name}_${os}_${arch}.tar.gz" |
+        command head -n 1
     )
     if [[ ! "$asset_path" ]]; then exit 1; fi
     asset_uri="https://github.com${asset_path}"
 else
-    asset_uri="https://github.com/${owner}/${repo}/releases/download/${1}/${exe_name}_${os}_${arch}.tar.gz"
+    asset_uri="https://github.com/${owner}/${repo}/releases/download/${version}/${exe_name}_${os}_${arch}.tar.gz"
 fi
 
 mkdir -p ${downloadFolder}
