@@ -6,8 +6,8 @@ $ErrorActionPreference = 'Stop'
 
 $arr = $repo.Split('/')
 
-$owner = arr[0]
-$repoName = arr[1]
+$owner = $arr[0]
+$repoName = $arr[1]
 $exeName = $exe
 
 if ($exeName == "") {
