@@ -1,4 +1,12 @@
-### install script for all package
+### Installer
+
+This is a script for download binary from Github Release and install in your computer.
+
+For a long-term dependency, I wrote a lot of tools and released them on Github Release, but I had to write an installation script for each tool.
+
+This took me a lot of time and did a lot of repetitive work.
+
+So I decided to write a universal script, which applies to all warehouses.
 
 1. Shell (Mac/Linux)
 
