@@ -6,7 +6,7 @@ For a long time, I wrote a lot of tools and released them on Github Release, but
 
 This took me a lot of time and did a lot of repetitive work.
 
-So I decided to write a universal script, which applies to all warehouses.
+So I decided to write a universal script, which applies to all repo.
 
 It needs to meet the following format `{name}_{os}_{arch}.tar.gz`
 
