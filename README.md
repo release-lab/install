@@ -25,19 +25,19 @@ whatchanged_windows_amd64.tar.gz
 install latest version
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s -- -r={owner}/{repo}
+curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo}
 ```
 
 install specified version
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s -- -r={owner}/{repo} -v={version}
+curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -v={version}
 ```
 
 specified the filename
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s -- -r={owner}/{repo} -e={exe}
+curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -e={exe}
 ```
 
 ### 2. PowerShell (Windows):
@@ -45,17 +45,17 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -
 install latest version
 
 ```powershell
-$r="{owner}/{repo}";iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+$r="{owner}/{repo}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
 
 install specified version
 
 ```powershell
-$r="{owner}/{repo}";$v="{version}";iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+$r="{owner}/{repo}";$v="{version}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
 
 specified the filename
 
 ```bash
-$r="{owner}/{repo}";$exe="{exe}";iwr https://github.com/release-lab/install/raw/master/install.ps1 -useb | iex
+$r="{owner}/{repo}";$exe="{exe}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
