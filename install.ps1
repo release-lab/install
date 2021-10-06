@@ -5,6 +5,7 @@
 # required:
 # 1. $repo or $r
 # 2. $version or $v
+# 2. $exe or $e
 
 $ErrorActionPreference = 'Stop'
 $inputRepo = if ($repo) {
@@ -19,11 +20,17 @@ $inputVersion = if ($version) {
   "${v}"
 }
 
+$inputExe = if ($exe) {
+  "${exe}"
+} else {
+  "${e}"
+}
+
 $arr = $inputRepo.Split('/')
 
 $owner = $arr.Get(0)
 $repoName = $arr.Get(1)
-$exeName = "${exe}"
+$exeName = "${inputExe}"
 
 if ($exeName -eq "") {
   $exeName = "${repoName}"
