@@ -34,7 +34,7 @@ install specified version
 curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -v={version}
 ```
 
-specified the filename
+specified the executable filename name
 
 ```bash
 curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -e={exe}
@@ -54,8 +54,8 @@ install specified version
 $r="{owner}/{repo}";$v="{version}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
 
-specified the filename
+specified the executable filename name
 
 ```bash
-$r="{owner}/{repo}";$exe="{exe}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+$r="{owner}/{repo}";$e="{exe}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
