@@ -2,9 +2,13 @@
 # inherit from https://deno.land/x/install@v0.1.4/install.ps1
 # Copyright 2018 the Deno authors. All rights reserved. MIT license.
 
+# required:
+# 1. $repo or $r
+# 2. $version or $v
+
 $ErrorActionPreference = 'Stop'
 
-$arr = $repo.Split('/')
+$arr = ($repo -or $r).Split('/')
 
 $owner = $arr.Get(0)
 $repoName = $arr.Get(1)
@@ -15,7 +19,7 @@ if ($exeName -eq "") {
   $exeName = "${repoName}"
 }
 
-if ($v) {
+if ($version -or $v) {
   $version = "${v}"
 }
 

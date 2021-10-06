@@ -34,7 +34,7 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -
 install specified version
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s {owner}/{repo} -v={version}
+curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s -- -r={owner}/{repo} -v={version}
 
 # example:
 #curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s release-lab/whatchanged -v=v0.4.1
@@ -43,7 +43,7 @@ curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -
 specified the filename
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s {owner}/{repo} -e={exe}
+curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s -- r={owner}/{repo} -e={exe}
 
 # example:
 #curl -fsSL https://github.com/release-lab/install/raw/master/install.sh | bash -s release-lab/whatchanged -e=whatchanged

@@ -8,16 +8,9 @@ if [ $# -eq 0 ]; then
 fi
 
 # eg. release-lab/whatchanged
-args=(`echo $1 | tr '/' ' '`)
-
-if [ ${#args[@]} -ne 2 ]; then
-    echo "ERROR: invalid params for repo '$1'"
-    echo "ERROR: the argument should be format like 'owner/repo'"
-    exit 1
-fi
-
-owner=${args[0]}
-repo=${args[1]}
+target=""
+owner=""
+repo=""
 exe_name=""
 version=""
 
@@ -48,6 +41,10 @@ get_os(){
 # parse flag
 for i in "$@"; do
     case $i in
+        -r=*|--repo=*)
+            target="${i#*=}"
+            shift # past argument=value
+        ;;
         -v=*|--version=*)
             version="${i#*=}"
             shift # past argument=value
@@ -61,6 +58,17 @@ for i in "$@"; do
         ;;
     esac
 done
+
+args=(`echo $target | tr '/' ' '`)
+
+if [ ${#args[@]} -ne 2 ]; then
+    echo "ERROR: invalid params for repo '$1'"
+    echo "ERROR: the argument should be format like 'owner/repo'"
+    exit 1
+else
+    owner=${args[0]}
+    repo=${args[1]}
+fi
 
 if [ -z "$exe_name" ]; then
     exe_name=$repo
