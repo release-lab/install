@@ -3,7 +3,7 @@
 set -e
 
 if [ $# -eq 0 ]; then
-    echo "Need to specify the install repository"
+    echo "ERROR: Need to specify the install repository"
     exit 1
 fi
 
@@ -11,12 +11,11 @@ fi
 args=(`echo $1 | tr '/' ' '`)
 
 if [ ${#args[@]} -ne 2 ]; then
-    echo "invalid params for repo '$1'"
-    echo "the argument should be format like 'owner/repo'"
+    echo "ERROR: invalid params for repo '$1'"
+    echo "ERROR: the argument should be format like 'owner/repo'"
     exit 1
 fi
 
-downloadFolder="${HOME}/Downloads"
 owner=${args[0]}
 repo=${args[1]}
 exe_name=""
@@ -65,40 +64,38 @@ done
 
 if [ -z "$exe_name" ]; then
     exe_name=$repo
-    echo "file name is not specified, use '$repo'"
+    echo "INFO: file name is not specified, use '$repo'"
+    echo "INFO: if you want to specify the name of the executable, set flag --exe=name"
 fi
 
-mkdir -p ${downloadFolder}
-
+downloadFolder="${HOME}/Downloads"
+mkdir -p ${downloadFolder} # make sure download folder exists
 os=$(get_os)
 arch=$(get_arch)
-dest_file="${downloadFolder}/${exe_name}_${os}_${arch}.tar.gz"
+file_name="${exe_name}_${os}_${arch}.tar.gz" # the file name should be download
+downloaded_file="${downloadFolder}/${file_name}" # the file path should be download
+executable_folder="/usr/local/bin" # Eventually, the executable file will be placed here
 
 # if version is empty
 if [ -z "$version" ]; then
     asset_path=$(
         command curl -sSf https://github.com/${owner}/${repo}/releases |
-        command grep -o "/${owner}/${repo}/releases/download/.*/${exe_name}_${os}_${arch}.tar.gz" |
+        command grep -o "/${owner}/${repo}/releases/download/.*/${file_name}" |
         command head -n 1
     )
     if [[ ! "$asset_path" ]]; then exit 1; fi
     asset_uri="https://github.com${asset_path}"
 else
-    asset_uri="https://github.com/${owner}/${repo}/releases/download/${version}/${exe_name}_${os}_${arch}.tar.gz"
+    asset_uri="https://github.com/${owner}/${repo}/releases/download/${version}/${file_name}"
 fi
 
-mkdir -p ${downloadFolder}
-
 echo "[1/3] Download ${asset_uri} to ${downloadFolder}"
-rm -f ${dest_file}
-curl --fail --location --output "${dest_file}" "${asset_uri}"
+rm -f ${downloaded_file}
+curl --fail --location --output "${downloaded_file}" "${asset_uri}"
 
-binDir=/usr/local/bin
-
-echo "[2/3] Install ${exe_name} to the ${binDir}"
-mkdir -p ${HOME}/bin
-tar -xz -f ${dest_file} -C ${binDir}
-exe=${binDir}/${exe_name}
+echo "[2/3] Install ${exe_name} to the ${executable_folder}"
+tar -xz -f ${downloaded_file} -C ${executable_folder}
+exe=${executable_folder}/${exe_name}
 chmod +x ${exe}
 
 echo "[3/3] Set environment variables"
@@ -107,8 +104,8 @@ if command -v $exe_name --version >/dev/null; then
     echo "Run '$exe_name --help' to get started"
 else
     echo "Manually add the directory to your \$HOME/.bash_profile (or similar)"
-    echo "  export PATH=${HOME}/bin:\$PATH"
-    echo "Run '$exe --help' to get started"
+    echo "  export PATH=${executable_folder}:\$PATH"
+    echo "Run '$exe_name --help' to get started"
 fi
 
 exit 0
