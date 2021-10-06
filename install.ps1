@@ -7,20 +7,30 @@
 # 2. $version or $v
 
 $ErrorActionPreference = 'Stop'
+$inputRepo = if ($repo) {
+  "${repo}"
+} else {
+  "${r}"
+}
 
-$arr = ($repo -or $r).Split('/')
+$inputVersion = if ($version) {
+  "${version}"
+} else {
+  "${v}"
+}
+
+$arr = $inputRepo.Split('/')
 
 $owner = $arr.Get(0)
 $repoName = $arr.Get(1)
 $exeName = "${exe}"
-$version = ""
 
 if ($exeName -eq "") {
   $exeName = "${repoName}"
 }
 
-if ($version -or $v) {
-  $version = "${v}"
+if ($inputVersion) {
+  $version = "${inputVersion}"
 }
 
 if ([Environment]::Is64BitProcess) {
