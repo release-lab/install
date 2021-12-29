@@ -82,7 +82,7 @@ if [ -z "$ext_name" ]; then
 fi
 
 if [ -z "$githubUrl" ]; then
-    exe_name="https://github.com"
+    githubUrl="https://github.com"
 fi
 
 downloadFolder="${HOME}/Downloads"
