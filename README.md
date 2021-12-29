@@ -40,6 +40,12 @@ specified the executable filename name
 curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -e={exe}
 ```
 
+install from a `Github Mirror` website (Very helpful if you got network trouble to accessing Github)
+
+```bash
+curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -g=https://mirror.github.com
+```
+
 ### 2. PowerShell (Windows):
 
 install latest version
@@ -58,4 +64,10 @@ specified the executable filename name
 
 ```bash
 $r="{owner}/{repo}";$e="{exe}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+```
+
+install from a `Github Mirror` website (Very helpful if you got network trouble to accessing Github)
+
+```powershell
+$r="{owner}/{repo}";$g="https://mirror.github.com";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```

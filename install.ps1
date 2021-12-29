@@ -26,6 +26,14 @@ $inputExe = if ($exe) {
   "${e}"
 }
 
+$githubUrl = if ($github) {
+  "${github}"
+} else if ($g) {
+  "${g}"
+}else {
+  "https://github.com"
+}
+
 $arr = $inputRepo.Split('/')
 
 $owner = $arr.Get(0)
@@ -55,9 +63,9 @@ $Target = "windows_$arch"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 $ResourceUri = if (!$version) {
-  "https://github.com/${owner}/${repoName}/releases/latest/download/${exeName}_${Target}.tar.gz"
+  "${githubUrl}/${owner}/${repoName}/releases/latest/download/${exeName}_${Target}.tar.gz"
 } else {
-  "https://github.com/${owner}/${repoName}/releases/download/${Version}/${exeName}_${Target}.tar.gz"
+  "${githubUrl}/${owner}/${repoName}/releases/download/${Version}/${exeName}_${Target}.tar.gz"
 }
 
 if (!(Test-Path $BinDir)) {

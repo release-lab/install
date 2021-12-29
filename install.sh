@@ -12,6 +12,7 @@ target=""
 owner=""
 repo=""
 exe_name=""
+github=""
 version=""
 
 get_arch() {
@@ -53,6 +54,10 @@ for i in "$@"; do
             exe_name="${i#*=}"
             shift # past argument=value
         ;;
+        -g=*|--github=*)
+            github="${i#*=}"
+            shift # past argument=value
+        ;;
         *)
             # unknown option
         ;;
@@ -71,7 +76,11 @@ else
 fi
 
 if [ -z "$exe_name" ]; then
-    exe_name=$repo
+    exe_name="https://github.com"
+fi
+
+if [ -z "$github" ]; then
+    github=$repo
     echo "INFO: file name is not specified, use '$repo'"
     echo "INFO: if you want to specify the name of the executable, set flag --exe=name"
 fi
@@ -87,14 +96,14 @@ executable_folder="/usr/local/bin" # Eventually, the executable file will be pla
 # if version is empty
 if [ -z "$version" ]; then
     asset_path=$(
-        command curl -sSf https://github.com/${owner}/${repo}/releases |
+        command curl -sSf ${github}/${owner}/${repo}/releases |
         command grep -o "/${owner}/${repo}/releases/download/.*/${file_name}" |
         command head -n 1
     )
     if [[ ! "$asset_path" ]]; then exit 1; fi
-    asset_uri="https://github.com${asset_path}"
+    asset_uri="${github}${asset_path}"
 else
-    asset_uri="https://github.com/${owner}/${repo}/releases/download/${version}/${file_name}"
+    asset_uri="${github}/${owner}/${repo}/releases/download/${version}/${file_name}"
 fi
 
 echo "[1/3] Download ${asset_uri} to ${downloadFolder}"
