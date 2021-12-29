@@ -43,7 +43,7 @@ curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s --
 install from a `Github Mirror` website (Very helpful if you got network trouble to accessing Github)
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -g=https://mirror.github.com
+curl -fsSL https://mirror.github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -g=https://mirror.github.com
 ```
 
 ### 2. PowerShell (Windows):
@@ -69,5 +69,5 @@ $r="{owner}/{repo}";$e="{exe}";iwr https://github.com/release-lab/install/raw/v1
 install from a `Github Mirror` website (Very helpful if you got network trouble to accessing Github)
 
 ```powershell
-$r="{owner}/{repo}";$g="https://mirror.github.com";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+$r="{owner}/{repo}";$g="https://mirror.github.com";iwr https://mirror.github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
