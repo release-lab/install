@@ -75,8 +75,8 @@ else
     repo=${args[1]}
 fi
 
-if [ -z "$ext_name" ]; then
-    ext_name=$repo
+if [ -z "$exe_name" ]; then
+    exe_name=$repo
     echo "INFO: file name is not specified, use '$repo'"
     echo "INFO: if you want to specify the name of the executable, set flag --exe=name"
 fi
