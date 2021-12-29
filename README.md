@@ -25,25 +25,28 @@ whatchanged_windows_amd64.tar.gz
 install latest version
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo}
+curl -fsSL https://raw.githubusercontent.com/release-lab/install/v1/install.sh | bash -s -- -r={owner}/{repo}
 ```
 
 install specified version
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -v={version}
+curl -fsSL https://raw.githubusercontent.com/release-lab/install/v1/install.sh | bash -s -- -r={owner}/{repo} -v={version}
 ```
 
 specified the executable filename name
 
 ```bash
-curl -fsSL https://github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -e={exe}
+curl -fsSL https://raw.githubusercontent.com/release-lab/install/v1/install.sh | bash -s -- -r={owner}/{repo} -e={exe}
 ```
 
-install from a `Github Mirror` website (Very helpful if you got network trouble to accessing Github)
+install from a `Github Mirror` website (Very helpful if you got network trouble to accessing Github). see [forward-cli](https://github.com/axetroy/forward-cli)
 
 ```bash
-curl -fsSL https://mirror.github.com/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -g=https://mirror.github.com
+# setup revers proxy
+forward https://raw.githubusercontent.com
+# install
+curl -fsSL http://localhost/release-lab/install/v1/install.sh | bash -s -- -r={owner}/{repo} -g=http://localhost
 ```
 
 ### 2. PowerShell (Windows):
@@ -51,23 +54,26 @@ curl -fsSL https://mirror.github.com/release-lab/install/raw/v1/install.sh | bas
 install latest version
 
 ```powershell
-$r="{owner}/{repo}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+$r="{owner}/{repo}";iwr https://raw.githubusercontent.com/release-lab/install/v1/install.ps1 -useb | iex
 ```
 
 install specified version
 
 ```powershell
-$r="{owner}/{repo}";$v="{version}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+$r="{owner}/{repo}";$v="{version}";iwr https://raw.githubusercontent.com/release-lab/install/v1/install.ps1 -useb | iex
 ```
 
 specified the executable filename name
 
 ```bash
-$r="{owner}/{repo}";$e="{exe}";iwr https://github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+$r="{owner}/{repo}";$e="{exe}";iwr https://raw.githubusercontent.com/release-lab/install/v1/install.ps1 -useb | iex
 ```
 
-install from a `Github Mirror` website (Very helpful if you got network trouble to accessing Github)
+install from a `Github Mirror` website (Very helpful if you got network trouble to accessing Github). see [forward-cli](https://github.com/axetroy/forward-cli)
 
 ```powershell
-$r="{owner}/{repo}";$g="https://mirror.github.com";iwr https://mirror.github.com/release-lab/install/raw/v1/install.ps1 -useb | iex
+# setup revers proxy
+forward https://raw.githubusercontent.com
+# install
+$r="{owner}/{repo}";$g="http://localhost";iwr http://localhost/release-lab/install/v1/install.ps1 -useb | iex
 ```
