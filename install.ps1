@@ -28,7 +28,7 @@ $inputExe = if ($exe) {
 
 $githubUrl = if ($github) {
   "${github}"
-} else if ($g) {
+} elseif ($g) {
   "${g}"
 }else {
   "https://github.com"
