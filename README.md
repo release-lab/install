@@ -44,11 +44,10 @@ install from a `Github Mirror` website (Very helpful if you got network trouble 
 
 ```bash
 # setup revers proxy
-forward --proxy-external https://github.com
+$ forward --proxy-external https://github.com
+2022/01/26 16:52:42 Proxy 'http://192.168.4.105:80' to 'https://github.com'
 # install
-curl -fsSL http://localhost/release-lab/install/raw/v1/install.sh | bash -s -- -r={owner}/{repo} -g=http://localhost
-# eg.
-curl -fsSL http://192.168.4.25/release-lab/install/raw/v1/install.sh | bash -s -- -r=release-lab/whatchanged -g=http://192.168.4.25
+$ curl -fsSL http://192.168.4.105/release-lab/install/raw/v1/install.sh | bash -s -- -r=release-lab/whatchanged -g=http://192.168.4.105
 ```
 
 ### 2. PowerShell (Windows):
@@ -75,9 +74,8 @@ install from a `Github Mirror` website (Very helpful if you got network trouble 
 
 ```powershell
 # setup revers proxy
-forward --proxy-external https://github.com
+$ forward --proxy-external https://github.com
+2022/01/26 16:52:42 Proxy 'http://192.168.4.105:80' to 'https://github.com'
 # install
-$r="{owner}/{repo}";$g="http://localhost";iwr http://localhost/release-lab/install/raw/v1/install.ps1 -useb | iex
-# eg.
-$r="release-lab/whatchanged";$g="http://192.168.4.25";iwr http://192.168.4.25/release-lab/install/raw/v1/install.ps1 -useb | iex
+$ $r="release-lab/whatchanged";$g="http://192.168.4.105";iwr http://192.168.4.105/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
