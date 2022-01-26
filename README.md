@@ -75,5 +75,5 @@ install from a `Github Mirror` website (Very helpful if you got network trouble 
 # setup revers proxy
 forward --proxy-external https://github.com
 # install
-$r="{owner}/{repo}";$g="http://localhost";iwr http://localhost/release-lab/install/v1/install.ps1 -useb | iex
+$r="{owner}/{repo}";$g="http://localhost";iwr http://localhost/release-lab/install/raw/v1/install.ps1 -useb | iex
 ```
