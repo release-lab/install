@@ -13,6 +13,7 @@ owner=""
 repo=""
 exe_name=""
 githubUrl=""
+githubApiUrl=""
 version=""
 
 get_arch() {
@@ -94,6 +95,9 @@ fi
 if [ -z "$githubUrl" ]; then
     githubUrl="https://github.com"
 fi
+if [ -z "$githubApiUrl" ]; then
+    githubApiUrl="https://api.github.com"
+fi
 
 downloadFolder="${HOME}/Downloads"
 mkdir -p ${downloadFolder} # make sure download folder exists
@@ -106,7 +110,10 @@ executable_folder="/usr/local/bin" # Eventually, the executable file will be pla
 # if version is empty
 if [ -z "$version" ]; then
     asset_path=$(
-        command curl -sSf ${githubUrl}/${owner}/${repo}/releases |
+        command curl -L \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            ${githubApiUrl}/repos/${owner}/${repo}/releases |
         command grep -o "/${owner}/${repo}/releases/download/.*/${file_name}" |
         command head -n 1
     )
