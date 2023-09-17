@@ -110,7 +110,10 @@ if [ -z "$version" ]; then
         command grep -o "/${owner}/${repo}/releases/download/.*/${file_name}" |
         command head -n 1
     )
-    if [[ ! "$asset_path" ]]; then exit 1; fi
+    if [[ ! "$asset_path" ]]; then
+        echo "ERROR: unable to find a release asset called ${file_name}"
+        exit 1
+    fi
     asset_uri="${githubUrl}${asset_path}"
 else
     asset_uri="${githubUrl}/${owner}/${repo}/releases/download/${version}/${file_name}"
