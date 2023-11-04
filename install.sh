@@ -99,7 +99,7 @@ if [ -z "$githubApiUrl" ]; then
     githubApiUrl="https://api.github.com"
 fi
 
-downloadFolder="${HOME}/Downloads"
+downloadFolder="${TMPDIR:-/tmp}"
 mkdir -p ${downloadFolder} # make sure download folder exists
 os=$(get_os)
 arch=$(get_arch)
